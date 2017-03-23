@@ -68,7 +68,7 @@ pickle.dump(dct,open("svc_pickle.p","wb"))
 
 ### Sliding Window Search
 
-####1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
+#### 1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
 
 I used ipython widgets again to explore different scales and 1.5 seems to work good for the data. Below is the image of the widget with exploration capability. Also, explored 0.45 and 0.5 overlapping. 0.5 works good. More overlapping mean more calculation and hence slow processing.
 
@@ -84,7 +84,7 @@ Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spat
 ### Video Implementation
 
 
-Here's a the video 
+Here's a the video
 
 [![Vehicle Detection](https://img.youtube.com/vi/0Fqs79vQjaM/0.jpg)](https://www.youtube.com/watch?v=0Fqs79vQjaM "Vehicle Detection")
 
@@ -92,6 +92,10 @@ Here's a the video
 #### 2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
 
 I recorded the positions of positive detections in each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.  
+
+False positives are removed using two tricks.
+1. Looking at the lower half of the pixels in the image.
+2. Heatmaps are colleted and keeping a running average of the heatmaps. Currently, slightly wobbly implementation is looking at 5 past heatmaps and averaging the values.
 
 Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
 
