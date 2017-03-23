@@ -71,6 +71,7 @@ pickle.dump(dct,open("svc_pickle.p","wb"))
 ####1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
 
 I used ipython widgets again to explore different scales and 1.5 seems to work good for the data. Below is the image of the widget with exploration capability. Also, explored 0.45 and 0.5 overlapping. 0.5 works good. More overlapping mean more calculation and hence slow processing.
+
 ![alt text][image3]
 
 #### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
@@ -82,8 +83,10 @@ Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spat
 
 ### Video Implementation
 
-####1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
-Here's a [![Vehicle Detection](https://img.youtube.com/vi/0Fqs79vQjaM/0.jpg)](https://www.youtube.com/watch?v=0Fqs79vQjaM "Vehicle Detection")
+
+Here's a the video 
+
+[![Vehicle Detection](https://img.youtube.com/vi/0Fqs79vQjaM/0.jpg)](https://www.youtube.com/watch?v=0Fqs79vQjaM "Vehicle Detection")
 
 
 #### 2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
@@ -99,9 +102,11 @@ Here's an example result showing the heatmap from a series of frames of video, t
 ![alt text][image8]
 
 ### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from all six frames:
+
 ![alt text][image6]
 
 ### Here the resulting bounding boxes are drawn onto the last frame in the series:
+
 ![alt text][image7]
 
 
